@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 
-export const SButtonCadastrar = () => {
-    const Style = StyleSheet.create({
+export const SButtonCadastrar = () => 
+{
+    return StyleSheet.create({
         text : {
             textDecorationLine:'underline',
             color   :'rgb(245, 14, 222)',
@@ -9,5 +10,4 @@ export const SButtonCadastrar = () => {
     
         }
     });
-    return Style
 }

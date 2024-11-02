@@ -2,8 +2,7 @@ import { StyleSheet }  from "react-native";
 
 export const getStylesMain = () => 
 {
-
-    const Style = StyleSheet.create({
+    return StyleSheet.create({
         viewMain : {
             justifyContent : 'center',
             alignItems     : 'center',
@@ -18,6 +17,4 @@ export const getStylesMain = () =>
             marginTop : 14
         }
     });
-    
-    return Style;
 }

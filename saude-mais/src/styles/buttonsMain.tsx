@@ -1,9 +1,8 @@
 import { StyleSheet } from "react-native";
 
-
 export const getStyles = () => 
 {
-    const Style = StyleSheet.create({
+    return StyleSheet.create({
         view : {
             backgroundColor : 'rgba(255, 255, 255, 0.532)',
             padding : 20,
@@ -16,5 +15,4 @@ export const getStyles = () =>
             fontSize : 15,
         },
     });
-    return Style;
 }

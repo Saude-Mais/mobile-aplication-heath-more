@@ -2,7 +2,7 @@ import { StyleSheet }  from "react-native";
 
 export const getStylesLogin = () => 
 {
-    const Style = StyleSheet.create({
+    return StyleSheet.create({
         containerLogin : {
             backgroundColor : 'rgb(255, 255, 255)',
             alignItems : 'center',
@@ -21,9 +21,7 @@ export const getStylesLogin = () =>
             height:12,
             alignItems:'center',
             justifyContent:'center',
-            borderRadius:100,
-            
-            
+            borderRadius:100,     
         },
         text : {
             fontSize   : 17,
@@ -39,8 +37,7 @@ export const getStylesLogin = () =>
             paddingTop   : 10,         
             borderRadius : 0 , 
             borderBottomWidth : 1.5
-        },
-        
+        },      
         ViewButtonEntrar : {
             marginTop:25,
         },
@@ -55,5 +52,4 @@ export const getStylesLogin = () =>
             marginRight : 150
         }
     });
-    return Style;
 };
