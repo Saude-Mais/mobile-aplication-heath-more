@@ -49,17 +49,17 @@ export default function Main( { navigation } : Props){
                 </View>
 
                 <View style={Style.viewGroupButton}>
-
                     <View style={Style.viewButtons}>
                         <ButtonCardeneta onPress={() => navigation.navigate('Login')}/>
                     </View>
+
                     <View style={Style.viewButtons}>
-                        <ButtonExams />
+                        <ButtonExams onPress={()=> navigation.navigate('SelecaoExame')}/>
                     </View>
+
                     <View style={Style.viewButtons}>
                         <ButtonChat />
                     </View>
-
                 </View>
             </View>
         </ImageBackground>

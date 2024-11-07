@@ -2,12 +2,13 @@ import React ,{ useState } from "react";
 import { View , Text , TextInput , ImageBackground , Image, Alert  } from "react-native";
 import MaskInput ,{ Masks } from 'react-native-mask-input';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList  } from '@navigation/navegacao_principal';
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
 import Icon_        from "@assets/icons/icon_logo.png";
 
+// Services
+import { Logar } from "services/logarUsuario";
 
 // Funçoes 'Css_' abaixo
 import { getStylesBG }    from "styles/backgroundImage";
@@ -32,14 +33,18 @@ interface Props {
 }
 export default function Login({navigation}: Props) {
     
-    const [Boleano,setBoleano]     = useState(true);
-    const [Texto ,setTexto]        = useState('');
-    const [Cpf   ,setCpf  ]        = useState(null);
-    const [Senha ,setSenha]        = useState(null);
-    const [Olho  ,setOlho ]        = useState(true);
+    const [Boleano,setBoleano] = useState<string |boolean>(true);
+    const [Email_ ,setEmail]   = useState<string |null>(null);
+    const [Senha ,setSenha]    = useState<string |null>(null);
+    const [Olho  ,setOlho ]    = useState<string |boolean>(true);
 
     const SenhaVisivel = () => setOlho(!Olho)
-
+    const EsqueceuSenha = () => {
+        alert('função indisponivel');
+    }
+    const Entrar = async() => {
+        const result_ = Logar(Email_, Senha);
+    }
 
     return(
         <ImageBackground source={PlanoDeFundo} style={StyleBackgroud.container}>
@@ -48,15 +53,14 @@ export default function Login({navigation}: Props) {
             </View>
 
             <View style={Style.containerLogin}>  
-                <Text style={Style.text} >Cpf{Texto}</Text>
+                <Text style={Style.text} >Email</Text>
                     <MaskInput 
-                        placeholder  = {"Digite seu Cpf"}
-                        maxLength    = {14}
+                        placeholder  = {"Digite seu email"}
+                        maxLength    = {40}
                         style        = {Style.textInput}
-                        value        = {Cpf}
-                        onChangeText = {setCpf}
-                        mask         = {Masks.BRL_CPF}
-                        keyboardType = 'numeric'
+                        value        = {Email_}
+                        onChangeText = {setEmail}
+                        keyboardType = 'default'
                     />
                 
                 <Text style={Style.text}>Senha</Text>
@@ -78,11 +82,11 @@ export default function Login({navigation}: Props) {
                 </View>
                 
                 <View style={Style.ViewButtonEsqueciS}>
-                    <ButtonEsqueceuSenha />
+                    <ButtonEsqueceuSenha onPress={()=> EsqueceuSenha()}/>
                 </View>
                 
                 <View style={Style.ViewButtonEntrar}>
-                    <ButtonEntrar />
+                    <ButtonEntrar onPress={() => Entrar() }/>
                 </View>
             </View>
 

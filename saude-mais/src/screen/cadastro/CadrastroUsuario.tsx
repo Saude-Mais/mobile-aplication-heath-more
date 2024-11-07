@@ -52,13 +52,13 @@ export default function CadastroUsuario({navigation}: Props){
     const [Rg,setRg]                         = useState<string | null>(null);
     const [Cpf,setCpf]                       = useState<string | null>(null);
     const [Cep,setCep]                     = useState<string | null>(null);
-    const [nomeRua,setNome_Rua]           = useState<string | null>(null);
-    const [numeroRua,setNumero_Rua]       = useState<string | null>(null);
+    const [nomeRua,setNome_Rua]            = useState<string | null>(null);
+    const [numeroRua,setNumero_Rua]        = useState<string | null>(null);
     const [Cidade,setCidade]               = useState<string | null>(null);
     const [Estado,setEstado]               = useState<string | null>(null);
     const [Email,setEmail]  = useState<string | null>(null);
-    const [Senha ,setSenha]   = useState<string | null>(null);
-    const [Rsenha,setRsenha]  = useState<string | null>(null);
+    const [Senha ,setSenha] = useState<string | null>(null);
+    const [Rsenha,setRsenha]= useState<string | null>(null);
 
     const cadastrarUser = async() => {
         const infor_user = {
@@ -73,8 +73,14 @@ export default function CadastroUsuario({navigation}: Props){
             rsenha:Rsenha, senha: Senha
         }
         const result_:Boolean = UserVerify(infor_user)
-        if ( result_ ){
-            
+        if ( result_ )
+        {
+            delete infor_user.rsenha;
+            const validationCad = await CadastrarUsuario(infor_user);
+            if (validationCad)
+            {
+                alert('Cadastro efetuado, retornando para Screen de Login...');
+            }
         }
 
 
