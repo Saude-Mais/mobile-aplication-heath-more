@@ -8,7 +8,7 @@ import PlanoDeFundo from "@assets/image/drawerFundo.png";
 import Icon_        from "@assets/icons/icon_logo.png";
 
 // Services
-import { Logar } from "services/logarUsuario";
+import { Logar, getIdUser } from "services/logarUsuario";
 
 // Funçoes 'Css_' abaixo
 import { getStylesBG }    from "styles/backgroundImage";
@@ -43,10 +43,19 @@ export default function Login({navigation}: Props) {
         alert('função indisponivel');
     }
     const Entrar = async() => {
-        const result_ = Logar(Email_, Senha);
+        const isEmail_ = Logar(Email_, Senha);
+
+        if ( isEmail_ ){
+            const userID = await getIdUser(Email_);
+    
+            navigation.navigate("InicioCrianca", {userId: userID})
+        } else {
+            alert('Senha ou Email inválido');
+        }
     }
 
     return(
+        
         <ImageBackground source={PlanoDeFundo} style={StyleBackgroud.container}>
             <View>
                 <Image source={Icon_} style={StyleBackgroud.iconLogo}/>

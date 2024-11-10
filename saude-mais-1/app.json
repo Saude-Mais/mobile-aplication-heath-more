@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "saude-mais",
-    "slug": "saude-mais",
+    "name": "saude-mais-1",
+    "slug": "saude-mais-1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,12 +22,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "18095be0-cde6-4ddb-ab2a-13fabcb0afc4"
-      }
-    },
-    "owner": "mat9uz"
+    }
   }
 }

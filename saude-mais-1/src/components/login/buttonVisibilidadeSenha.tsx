@@ -1,7 +1,7 @@
 import { TouchableOpacity , Image } from "react-native";
 
 //icone
-import visibilidade from "@assets/icons/icon_olho.png"
+import visibilidade from "@assets/icons/iconOlho.png"
 
 //estilo
 import { SButtonVisibilidadeSenha } from "styles/buttonLoginVisibilidadeSenha";

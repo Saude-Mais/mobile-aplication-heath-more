@@ -1,4 +1,3 @@
-import * as ImagePicker from 'expo-image-picker';
 import { View, Text, ImageBackground, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useState }            from 'react';
@@ -8,14 +7,15 @@ import PlanoDeFundo from "@assets/image/drawerFundo.png";
 import Icon_        from "@assets/icons/icon_logo.png";
 
 // Funçoes 'Css_' abaixo
-import { getStylesBG }    from "styles/backgroundImage";
-import { getStylesMain }  from "styles/stylesMain";
-import { STuberculose } from "styles/styleTuberculose";
+import { getStylesBG }   from "styles/backgroundImage";
+import { getStylesMain } from "styles/stylesMain";
+import { STuberculose }  from "styles/styleTuberculose";
 
 
 // Components
 import ButtonGetImage   from '@components/tuberculose/buttonImage';
 import ButtonEnviarFoto from '@components/tuberculose/buttonEnviarFoto';
+
 //-----
 const StyleBD = getStylesBG();
 const Style   = STuberculose();
