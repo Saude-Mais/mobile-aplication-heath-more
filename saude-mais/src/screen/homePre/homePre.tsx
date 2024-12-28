@@ -39,7 +39,7 @@ export default function HomePre({navigation} : props){
                     </View>
                     
                     <View style={Style.viewButtons}>
-                        < ButtonPreExamesSangue />
+                        < ButtonPreExamesSangue onPress={()=>{navigation.navigate("Exames")}}/>
                     </View>
 
                     <View style={Style.viewButtons}>

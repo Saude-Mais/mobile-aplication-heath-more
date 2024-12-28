@@ -1,6 +1,7 @@
 import { View, Text, ImageBackground, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useState }            from 'react';
+import * as ImagePicker        from 'expo-image-picker';
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
@@ -29,11 +30,19 @@ interface Props {
 export default function Tuberculose({navigation}: Props){
     
     const [image, setImage] = useState<string | null>(null);
-    const [Text_, setText_] = useState<string | null>("");
     const [Visible, setVisible] = useState<true | false>(false);
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
+
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        
+
+        if (permissionResult.granted === false) {
+            alert("Permission to access camera roll is required!");
+            return;
+        };
+
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: true,
@@ -41,7 +50,6 @@ export default function Tuberculose({navigation}: Props){
         });
         
         if (!result.canceled) {
-            setText_('Imagem selecionada')
             setVisible(!Visible);
             setImage(result.assets[0].uri);
           }
@@ -57,14 +65,17 @@ export default function Tuberculose({navigation}: Props){
                         </View>
 
                         <View style={Style.viewGroupButton}>
-                            <ButtonGetImage onPress={pickImage}/>
+                            <ButtonGetImage onPress={() =>{ pickImage(); }}/>
                         </View>
                         <View style={Style.viewImage}>
-                            {Text_ && <Text>{Text_}</Text>}
                             {image && <Image source={{ uri: image }} style={Style.image} />}
-                            <View>
+                        </View>
                                 
-                            </View>
+                        <View style={Style.viewButtonVisible}>
+                            { 
+                                Visible && 
+                                <ButtonEnviarFoto />
+                            }
                         </View>
                     </View>
         </ImageBackground>

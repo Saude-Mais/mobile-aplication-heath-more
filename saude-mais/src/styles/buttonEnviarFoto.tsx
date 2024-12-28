@@ -4,16 +4,16 @@ export const SButtonEnviarFoto = () =>
 {
     return StyleSheet.create({
         text : {
-            color    : 'white',
+            color    : 'Black',
             fontSize : 16,
         },
         view : {
-            alignItems : 'center',
-            justifyContent: 'center',
-            backgroundColor : 'rgb(31, 138, 239)',
-            padding      : 10,
-            borderRadius : 12,
-            width        : 100,
+            backgroundColor : 'rgb(0, 180, 69)',
+            padding : 15,
+            borderRadius : 20,
+            borderWidth : 0 ,
+            alignItems  : 'center',
+            justifyContent : 'center',
         }
     });
 }

@@ -34,7 +34,7 @@ export default function SelecaoRaioX({navigation} : props){
                 </View>
                     
                 <View style={Style.viewGroupButton}>
-            
+                    
                     <View style={Style.viewButtons}>
                         < ButtonTuberculose onPress={() => navigation.navigate("Tuberculose")} />
                     </View>

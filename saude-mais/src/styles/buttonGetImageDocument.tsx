@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 
-export const SButtonGetImage = () =>{
+export const SButtonGetImageDocument = () =>{
     return StyleSheet.create({
         view : {
             backgroundColor : 'rgba(255, 255, 255, 0.532)',

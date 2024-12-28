@@ -26,9 +26,12 @@ export const STuberculose = () =>
             alignItems:'center',
             justifyContent: "center",
         },
+        viewButtonVisible : {
+            marginTop : 20,
+        },
         text_ : {
             marginBottom : 10,
             fontFamily:14,
-        }
+        },
     });
 }

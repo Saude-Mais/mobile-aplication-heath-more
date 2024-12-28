@@ -10,7 +10,7 @@ export default function ButtonEnviarFoto({onPress})
     return(
         <TouchableOpacity onPress={onPress}>
             <View style={Style.view}>
-                <Text style={Style.text}>Enviar para classificação</Text>
+                <Text style={Style.text}>Enviar Foto</Text>
             </View>
         </TouchableOpacity>
     );

@@ -10,8 +10,8 @@ import DrawerCustom      from '@components/Drawer/Drawer'
 import HomePre      from "screen/homePre/homePre";
 import SelecaoRaioX from "screen/selecaoRaioX/selecaoRaioX";
 import Tuberculose  from 'screen/exames/Tuberculose';
-import Ajuda from "screen/ajuda/ajuda";
-
+import Ajuda        from "screen/ajuda/ajuda";
+import Exames       from "screen/exames/Exames";
 
 // Criando drawer
 const Drawer = createDrawerNavigator()
@@ -21,11 +21,11 @@ export default function Page() {
     const route  = useRoute();
     
     return (
-        <Drawer.Navigator initialRouteName='Home' 
+        <Drawer.Navigator initialRouteName='HomePre' 
                           screenOptions={{ headerShown:false }}
                           drawerContent={props=><DrawerCustom {...props} />}>
 
-            <Drawer.Screen name="Home" component    ={Stack_navigation}   
+            <Drawer.Screen name="HomePre" component    ={Stack_navigation}   
                                                 initialParams={{userId: route.params.userId}}
                                             />
             <Drawer.Screen name="Ajuda" component = {Ajuda}  
@@ -40,9 +40,10 @@ const Stack_navigation = () =>{
     const route = useRoute()
     return (
         <Stack.Navigator screenOptions={{ headerShown:false }}>
-            <Stack.Screen name="Home"   component={HomePre}   
+            <Stack.Screen name="HomeExames"   component={HomePre}   
                                         initialParams={{ userId: route.params.userID}}   />
             <Stack.Screen name="SelecaoRaioX" component={SelecaoRaioX} />
+            <Stack.Screen name="Exames"       component={Exames} />
             <Stack.Screen name="Tuberculose"  component={Tuberculose}  />
 
 
