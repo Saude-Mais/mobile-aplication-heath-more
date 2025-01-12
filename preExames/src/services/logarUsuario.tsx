@@ -28,9 +28,7 @@ export const getIdUser = async (email: string) => {
 
         Snapshot.forEach((doc) => {
             userId = doc.id; // Pegue o primeiro ID (caso haja mais de um)
-            console.log(userId);
         });
-        
         return userId; // Retorne o ID fora do forEach
     } catch (error) {
         alert(error.message);

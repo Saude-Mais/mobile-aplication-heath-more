@@ -4,13 +4,13 @@ export const getStylesLogin = () =>
 {
     return StyleSheet.create({
         containerLogin : {
-            backgroundColor : 'rgb(255, 255, 255)',
+            backgroundColor : 'rgba(255, 255, 255, 0.77)',
             alignItems : 'center',
             width  : 330,
             height : 295,
             padding : 5,
             borderRadius : 20,
-            marginTop:50,
+            marginTop:60,
         },
 
         viewIconOlho : {

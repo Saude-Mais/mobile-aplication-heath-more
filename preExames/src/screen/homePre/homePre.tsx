@@ -1,6 +1,6 @@
 import { View, Text, ImageBackground, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-
+import { useRoute }            from '@react-navigation/native';
 
 // compoments 
 import ButtonRaioX           from '@components/selecaoHomePre/buttonRaioX';
@@ -26,25 +26,29 @@ interface props {
 }
 
 export default function HomePre({navigation} : props){
+    const route = useRoute();
 
     return(
         <ImageBackground source={PlanoDeFundo} style={StyleBD.container}>
             <View style={Style.viewMain}>
-                <View>
+                <View style={StyleBD.viewLogo}>
                     <Image source={Icon} style={StyleBD.iconLogo}/>    
                 </View>
                     
                 <View style={Style.viewGroupButton}>
                     <View style={Style.viewButtons}>
-                        < ButtonHistorico />
+                        < ButtonHistorico      
+                            onPress={()=>{navigation.navigate('Historico', {userID : route.params.userID})}}/>
                     </View>
                     
                     <View style={Style.viewButtons}>
-                        < ButtonPreExamesSangue onPress={()=>{navigation.navigate("Exames")}}/>
+                        < ButtonPreExamesSangue 
+                            onPress={()=>{navigation.navigate("Exames", { userID:route.params.userID })}}/>
                     </View>
 
                     <View style={Style.viewButtons}>
-                        < ButtonRaioX onPress={()=>{navigation.navigate("RaioX")}}/>
+                        < ButtonRaioX           
+                            onPress={()=>{navigation.navigate("RaioX")}}/>
                     </View>
                     
                     <View style={Style.viewButtons}>

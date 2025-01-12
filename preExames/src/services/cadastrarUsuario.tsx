@@ -10,7 +10,6 @@ interface Dados {
 }
 
 export const CadastrarUsuario = async (dados: Dados) => {
-    console.log(dados);
     try {
         // Criação do usuário no Firebase Authentication
         const userCredential = await createUserWithEmailAndPassword(Auth, dados.email, dados.senha);

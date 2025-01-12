@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useRoute }        from '@react-navigation/native';
 import { View, Text, ImageBackground } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 
 // Services
 import { ApiKey }             from '@services/apiKey';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { AddHistoric }        from '@services/salvarNoHistorico';
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
@@ -27,9 +29,11 @@ interface Props {
 export default function Exames({navigation}: Props){
     const [text, setText]           = useState<string>('');
     const [Documento, setDocumento] = useState<string>('');
+    const route = useRoute()
 
     const getDocument = async () => {
         try {
+            const userID = route.params.userID;
             // Pegando o documento
             const result = await DocumentPicker.getDocumentAsync({
                 type: 'application/pdf',
@@ -62,7 +66,7 @@ export default function Exames({navigation}: Props){
             const API_KEY = ApiKey();
             // Configurando e chamando a API Gemini
             const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'models/gemini-exp-1206' });
+            const model = genAI.getGenerativeModel({ model: 'models/gemini-2.0-flash-exp' });
 
             // Gerando o texto
             const text_ = await model.generateContent([
@@ -71,9 +75,14 @@ export default function Exames({navigation}: Props){
             },
                 'Meu exame de sangue está ok? me de uma resposta em 10 linhas', // prompt
             ]);
+            const text = text_.response.text();
+            setText(text);
 
-            setText(text_.response.text());
-            
+            await AddHistoric({
+                    texto : text,
+                    data  : new Date(),
+                    tipo  : 'Exame Preliminar'
+                }, userID)
         // Tratando os erros
         }catch(error: any){
             alert(error.message);
@@ -86,10 +95,13 @@ export default function Exames({navigation}: Props){
             <View style={Style.viewMain}>
                 <View style={Style.viewGroupButton}>
                     <ButtonGetDocument onPress={() =>{ getDocument(); }}/>
+                    
                     { Documento ? <Text>{Documento}</Text> : null }
-                    { text ? <View>
-                                <Text>{text}</Text> 
-                            </View> : null }
+                    <View>
+                        { text ? <View>
+                                    <Text>{text}</Text> 
+                                </View> : null }
+                    </View>
                 </View>
             </View>
             

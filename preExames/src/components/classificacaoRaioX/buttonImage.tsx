@@ -4,15 +4,15 @@ import { SButtonGetImageDocument } from "styles/buttonGetImageDocument";
 
 const Style = SButtonGetImageDocument();
 
-interface ButtonProps {
+interface props {
     onPress: () => void;
 }
-export default function ButtonGetImage({onPress}: ButtonProps) 
+export default function ButtonGetImage({onPress}: props) 
 {
     return(
         <TouchableOpacity onPress={onPress}>
             <View style={Style.view}>
-                <Text style={Style.text}>Selecionar Imagem raio X</Text>
+                <Text style={Style.text}>Selecionar {"\n "} Imagem</Text>
             </View>
         </TouchableOpacity>
     );

@@ -6,8 +6,9 @@ import Main            from 'screen/main/main';
 import Login           from 'screen/login/login';
 import CadastroUsuario from 'screen/cadastro/CadrastroUsuario';
 import Page            from './navegacaoHome';
-
+import ChatDoctor      from 'screen/chatdoctor/chatdoctor';
 type RootStackParamList = {
+
     Home: undefined;
     Profile: { userId: string };
  };
@@ -21,6 +22,7 @@ export default function NavegacaoPrincipal(){
                 <Stack.Screen name="Main"  component={Main}  />
                 <Stack.Screen name="Login" component={Login} initialParams={{ email:null }}/>
                 <Stack.Screen name="Home"  component={Page} />
+                <Stack.Screen name="chatbot" component={ChatDoctor} initialParams={{user:null}}/>
                 <Stack.Screen name='CadastroUsuario' component={CadastroUsuario}/>
             </Stack.Navigator>
         </NavigationContainer>

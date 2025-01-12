@@ -4,7 +4,11 @@ import { SButtonEntrar } from "styles/buttonLoginEntrar";
 
 
 const Style = SButtonEntrar();
-export default function ButtonEntrar({onPress}) 
+interface props {
+    onPress: () => void;
+}
+
+export default function ButtonEntrar({onPress}:props) 
 {
     return(
         <TouchableOpacity onPress={onPress}>

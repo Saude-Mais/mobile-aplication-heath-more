@@ -4,7 +4,10 @@ import { SButtonEsqueciSenha } from "styles/buttonLoginEsqueceuSenha";
 
 
 const Style = SButtonEsqueciSenha();
-export default function ButtonEsqueceuSenha({onPress}){
+interface props {
+    onPress: () => void;
+}
+export default function ButtonEsqueceuSenha({onPress}:props){
     return(
         <TouchableOpacity onPress={onPress}>
             <View>

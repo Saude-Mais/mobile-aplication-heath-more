@@ -15,13 +15,18 @@ export const SRaioxClassificacao = () =>
             marginTop : 10,
         },
         viewGroupButton : {
-            marginTop : 50
+            marginTop : 50,
+            alignSelf:"center",
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:"row",
         },
         viewButtons : {
             marginTop : 20
         },
         dropDown :{
-            width : 100,
+            width : 200,
+            marginRight:10
         },
         image: {
             width: 300,

@@ -10,12 +10,18 @@ export const getStylesBG = () =>
         },
         container2: {
             flex           : 1,
-            alignItems:'center'
+            alignItems:'center',
+            resizeMode: 'cover'
         },
         iconLogo : {
-            width  : 60,
-            height : 60,
-            marginTop:100
+            width  : 66,
+            height : 66,
+            marginLeft:10,
+        },
+        viewLogo : {
+            alignContent:'center',
+            justifyContent:'center',
+            marginTop:100,
         }
     });
 }

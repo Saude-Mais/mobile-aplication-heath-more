@@ -9,23 +9,23 @@ import {
 
 import MaskInput from 'react-native-mask-input';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useRoute }         from "@react-navigation/native";
+import { useRoute }         from "@react-navigation/native"  ;
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
-import Icon        from "@assets/icons/Iconlogo.png";
+import Icon         from "@assets/icons/Iconlogo.png"   ;
 
 // Services
 import { Logar, getIdUser } from "services/logarUsuario";
 
 // Funçoes 'Css_' abaixo
 import { getStylesBG }    from "styles/backgroundImage";
-import { getStylesLogin } from "styles/stylesLogin";
+import { getStylesLogin } from "styles/stylesLogin"    ;
 
 // Componentes
-import ButtonEntrar        from "@components/login/buttonEntrar";
-import ButtonEsqueceuSenha from "@components/login/buttonEsqueceuSenha";
-import ButtonCadastrar     from "@components/login/buttonCadastrar";
+import ButtonEntrar        from "@components/login/buttonEntrar"        ;
+import ButtonEsqueceuSenha from "@components/login/buttonEsqueceuSenha" ;
+import ButtonCadastrar     from "@components/login/buttonCadastrar"     ;
 import ButtonVisibilidadeSenha from "@components/login/buttonVisibilidadeSenha";
 
 // Estilos
@@ -39,6 +39,8 @@ type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 interface Props {
     navigation: MainScreenNavigationProp;
 }
+
+
 export default function Login({navigation}: Props) {
     const route = useRoute();
     const { email }: any = route.params;
@@ -49,12 +51,12 @@ export default function Login({navigation}: Props) {
 
     const SenhaVisivel = () => setOlho(!Olho)
     
-    const EsqueceuSenha = () => {
+    const EsqueceuSenha = async() => {
         alert('função indisponivel');
+
     }
 
     const Entrar = async() => {
-        navigation.navigate('Home', {id: '12'});
         try{
             const isEmail_ = Logar(Email_, Senha);
 
@@ -63,7 +65,7 @@ export default function Login({navigation}: Props) {
                 if (userID == undefined){
                     throw new Error('Erro ao pegar o ID do usuário');
                 }else{
-                    navigation.navigate('Home', {id: userID});
+                    navigation.navigate('Home', {userID: userID});
                 }
             }else{
                 throw new Error('Senha ou Email inválido');
@@ -74,10 +76,11 @@ export default function Login({navigation}: Props) {
 
     }
 
+
     return(
         
         <ImageBackground source={PlanoDeFundo} style={StyleBackgroud.container}>
-            <View>
+            <View style={StyleBackgroud.viewLogo}>
                 <Image source={Icon} style={StyleBackgroud.iconLogo}/>
             </View>
 

@@ -44,7 +44,7 @@ export default function Main( { navigation } : Props){
         <ImageBackground source={PlanoDeFundo} style={StyleBackgroud.container}>    
             <View style={Style.viewMain}>
 
-                <View>
+                <View style={StyleBackgroud.viewLogo}>
                     <Image source={Icon} style={StyleBackgroud.iconLogo}/>    
                 </View>
 
@@ -54,7 +54,7 @@ export default function Main( { navigation } : Props){
                     </View>
 
                     <View style={Style.viewButtons}>
-                        <ButtonChat />
+                        <ButtonChat      onPress={()=>navigation.navigate('chatbot')}/>
                     </View>
                 </View>
             </View>

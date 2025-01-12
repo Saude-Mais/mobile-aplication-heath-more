@@ -3,8 +3,11 @@ import { TouchableOpacity , View , Text } from "react-native";
 import { SButtonCadastrar } from "styles/buttonLoginCadastrar";
 const Style = SButtonCadastrar();
 
-export default function ButtonCadastrar({onPress})
-{
+interface props {
+    onPress: () => void;
+}
+
+export default function ButtonCadastrar({onPress}:props){
     return(
         <TouchableOpacity onPress={onPress}>
             <View>

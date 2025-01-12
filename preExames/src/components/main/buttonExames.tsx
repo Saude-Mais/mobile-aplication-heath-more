@@ -5,7 +5,11 @@ import { TouchableOpacity , View , Text } from "react-native";
 import { getStyles } from "styles/buttonsMain";
 
 const Style = getStyles();
-export default function ButtonExams({onPress}) 
+interface props {
+    onPress: () => void;
+}
+
+export default function ButtonExams({onPress}:props) 
 {
     return(
         <TouchableOpacity onPress={onPress}>

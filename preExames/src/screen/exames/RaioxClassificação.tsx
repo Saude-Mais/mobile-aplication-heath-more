@@ -50,11 +50,14 @@ export default function RaioXClassificacao({navigation}: Props){
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         try{
+            if (value == null){
+                throw new Error("Escolha um dos itens, por favor");
+            }
+            
             const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
             
             if (permissionResult.granted === false) {
-                alert("Permission to access camera roll is required!");
-                return;
+                throw new Error("Permissão para acessar a galeria de fotos é necessária!");
             };
     
             let result = await ImagePicker.launchImageLibraryAsync({
@@ -82,15 +85,19 @@ export default function RaioXClassificacao({navigation}: Props){
 
                         <View style={Style.viewGroupButton}>
                             <View>
-                            <DropDownPicker
-                                open={open}
-                                value={value}
-                                items={items}
-                                setOpen={setOpen}
-                                setValue={setValue}
-                                setItems={setItems}
-                                style={Style.dropDown}
-                            />
+                                <DropDownPicker
+                                    open    ={open}
+                                    value   ={value}
+                                    items   ={items}
+                                    setOpen ={setOpen}
+                                    setValue={setValue}
+                                    setItems={setItems}
+                                    style   ={Style.dropDown}
+                                    
+                                />
+                            </View>
+                            <View>
+                                <ButtonGetImage onPress={()=>{pickImage();}}/>
                             </View>
                             
                         </View>

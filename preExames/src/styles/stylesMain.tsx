@@ -9,6 +9,8 @@ export const getStylesMain = () =>
         },
         viewIcon : {
             marginTop : 10,
+            alignItems:'center',
+            justifyContent:'center'
         },
         viewGroupButton : {
             marginTop : 100

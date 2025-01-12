@@ -8,7 +8,10 @@ import { SButtonVisibilidadeSenha } from "styles/buttonLoginVisibilidadeSenha";
 
 
 const Style = SButtonVisibilidadeSenha();
-export default function ButtonVisibilidadeSenha({onPress}){
+interface props {
+    onPress: () => void;
+}
+export default function ButtonVisibilidadeSenha({onPress}:props){
     return(
         <TouchableOpacity onPress={onPress}>       
             <Image source={visibilidade} style={Style.icone}/>

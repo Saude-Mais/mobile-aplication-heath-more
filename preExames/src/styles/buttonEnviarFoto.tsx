@@ -8,9 +8,9 @@ export const SButtonEnviarFoto = () =>
             fontSize : 16,
         },
         view : {
-            backgroundColor : 'rgb(0, 180, 69)',
+            backgroundColor : 'rgb(0, 224, 86)',
             padding : 15,
-            borderRadius : 20,
+            borderRadius : 10,
             borderWidth : 0 ,
             alignItems  : 'center',
             justifyContent : 'center',
