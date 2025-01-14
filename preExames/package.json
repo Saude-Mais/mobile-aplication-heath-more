@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
+    "flow": "flow",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "expo start",
     "android": "expo start --android",
@@ -36,6 +37,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-native": "^5.0.0",
+    "flow-bin": "^0.258.1",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
     "react": "^18.3.1",

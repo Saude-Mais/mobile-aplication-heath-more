@@ -1,7 +1,6 @@
 import { StyleSheet }  from "react-native";
 
-export const getStylesLogin = () => 
-{
+export const getStylesLogin = () => {
     return StyleSheet.create({
         containerLogin : {
             backgroundColor : 'rgba(255, 255, 255, 0.77)',

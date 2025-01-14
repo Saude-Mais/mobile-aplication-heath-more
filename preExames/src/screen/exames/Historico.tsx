@@ -58,7 +58,7 @@ export default function Historico({ navigation }: Props) {
         return (new Date(timestamp.seconds * 1000)).toLocaleString();
     }
     const inverterOrdem = () =>{
-        setDicionario(dicionario.reverse())
+        setDicionario(dicionario.toReversed())
     }
     const visualizar = (item_:Historico) =>{
         setItem(item_);
