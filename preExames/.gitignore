@@ -2,7 +2,7 @@
 
 # dependencies
 node_modules/
-
+apiKey.tsx
 # Expo
 .expo/
 dist/
