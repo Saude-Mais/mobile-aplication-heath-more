@@ -1,4 +1,4 @@
-import { DB , App, Auth } from './firebase';
+import { DB , Auth } from './firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { getDocs , collection, query  ,where} from "firebase/firestore";
 
@@ -24,7 +24,7 @@ export const getIdUser = async (email: string) => {
         const Snapshot = await getDocs(cursor_);
   
         // Obtendo o ID do usuário
-        var userId = null; // Variável para armazenar o ID do usuário
+        let userId = null; // Variável para armazenar o ID do usuário
 
         Snapshot.forEach((doc) => {
             userId = doc.id; // Pegue o primeiro ID (caso haja mais de um)

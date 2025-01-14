@@ -2,18 +2,14 @@ import React ,{ useState } from "react";
 import { 
     View , 
     Text , 
-    TextInput , 
-    ImageBackground , 
-    KeyboardAvoidingView, Platform,
+    ImageBackground ,  
     ScrollView  } from "react-native";
-import MaskInput ,{ Masks } from 'react-native-mask-input';
 
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList  } from "@navigation/navegacaoMain"
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
-import Icon        from "@assets/icons/Iconlogo.png";
 
 // Estilos
 import { getStylesBG } from "styles/backgroundImage";
@@ -61,7 +57,7 @@ export default function CadastroUsuario({navigation}: Props){
                 email: Email,            
                 rsenha:Rsenha, senha: Senha
             }
-            const result_:Boolean = UserVerify(inforUser);
+            const result_:boolean = UserVerify(inforUser);
 
             if ( result_ == true){
                 delete inforUser.rsenha;
@@ -108,5 +104,3 @@ export default function CadastroUsuario({navigation}: Props){
         </ImageBackground>
     );
 }
-
-

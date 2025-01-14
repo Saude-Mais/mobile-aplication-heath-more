@@ -44,7 +44,6 @@ interface Props {
 export default function Login({navigation}: Props) {
     const route = useRoute();
     const { email }: any = route.params;
-    const [Boleano,setBoleano]= useState<string |boolean>(true);
     const [Email_ ,setEmail]   = useState<string |null>(email? email : null);
     const [Senha ,setSenha]    = useState<string |null>("");
     const [Olho  ,setOlho ]    = useState<string |boolean>(true);

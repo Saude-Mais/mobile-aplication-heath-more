@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Modal, ScrollView, TouchableOpacity, View, Text } from "react-native";
 
 
@@ -6,23 +5,34 @@ import { Modal, ScrollView, TouchableOpacity, View, Text } from "react-native";
 import { SComponentMMH } from "styles/compenentModalHistorico";
 
 const Style = SComponentMMH();
-export default function ModalHistorico({visible, item, onClose}:any){
 
+interface props {
+    visible: boolean;
+    item: {
+      tipo : string;
+      texto: string;
+      data : object;
+    };
+    onClose: () => void;
+  }
+  
 
+export default function ModalHistorico({visible, item, onClose}:props){
     return(
-        <Modal animationType='slide' visible={visible} onRequestClose={onClose}>
-            <View style={Style.viewMain}>
-                <View>
-                    <ScrollView>
-                        <Text>{item.tipo}</Text>
-                        <Text>{item.texto}</Text>
+        <Modal style={Style.modal} animationType='slide' transparent={true} visible={visible} onRequestClose={onClose}>
+            <View style={{alignItems:'center'}}>
+                <View style={Style.viewMain}>
+                    <ScrollView  style={{width:"90%"}}>
+                            <Text style={Style.textScrollTitle}>{item.tipo}</Text>
+                            <Text style={Style.textScrollTexto}>{item.texto}</Text>
                     </ScrollView>
+                    
+                    <TouchableOpacity onPress={onClose} style={Style.touch}>
+                        <View>
+                                <Text style={Style.touchText}>Fechar</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={onClose}>
-                    <View>
-                        <Text>Fechar</Text>
-                    </View>
-                </TouchableOpacity>
             </View>
         </Modal>
     )
