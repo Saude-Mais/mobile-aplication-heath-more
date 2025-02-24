@@ -33,15 +33,19 @@ const StyleBackgroud = getStylesBG();
 const Style          = getStylesLogin();
 
 
-// Tipo para a navegação
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+// Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
+
+type OutraTelaNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
 
 interface Props {
-    navigation: MainScreenNavigationProp;
+    navigation: OutraTelaNavigationProp;
 }
 
-
-export default function Login({navigation}: Props) {
+export default function Login({navigation}: Props):JSX.Element{
     const route = useRoute();
     const { email }: any = route.params;
     const [Email_ ,setEmail]   = useState<string |null>(email? email : null);
@@ -55,7 +59,7 @@ export default function Login({navigation}: Props) {
 
     }
 
-    const Entrar = async() => {
+    const Entrar = async():Promise<void> => {
         try{
             const isEmail_ = Logar(Email_, Senha);
 

@@ -4,7 +4,7 @@ import { createStackNavigator  } from "@react-navigation/stack";
 
 // Screens
 import HomePre            from "@screen/homePre/homePre";
-import RaioXClassificacao from "@screen/exames/RaioxClassificação";
+import RaioXClassificacao from "@screen/exames/RaioxClassificacao";
 import Historico          from "@screen/exames/Historico";
 
 import Exames             from "@screen/exames/Exames";

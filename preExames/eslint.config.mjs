@@ -48,12 +48,12 @@ export default [
       "prettier/prettier": "warn", // Integração com Prettier para consistência de estilo
     },
   },
-  {
+/*  {
     plugins: {
       prettier: prettier,
     },
     rules: {
       "prettier/prettier": "warn", // Configuração Prettier
     },
-  },
+  },*/
 ];

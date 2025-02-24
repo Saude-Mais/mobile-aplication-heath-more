@@ -1,4 +1,5 @@
-import { View, Text, ImageBackground, Image } from 'react-native';
+/* eslint-disable prettier/prettier */
+import { View, ImageBackground, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useRoute }            from '@react-navigation/native';
 
@@ -19,13 +20,20 @@ import { getStylesMain }  from "styles/stylesMain";
 const StyleBD = getStylesBG();
 const Style = getStylesMain();
 
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+// Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
 
-interface props {
-    navigation: MainScreenNavigationProp;
+type OutraTelaNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
+
+interface Props {
+    navigation: OutraTelaNavigationProp;
 }
 
-export default function HomePre({navigation} : props){
+
+export default function HomePre({navigation} : Props): JSX.Element {
     const route = useRoute();
 
     return(

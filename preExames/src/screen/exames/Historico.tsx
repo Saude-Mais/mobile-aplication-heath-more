@@ -1,17 +1,13 @@
-import { 
-    ImageBackground, 
-    View , 
-    Image, 
-    ScrollView, 
-    TouchableOpacity, 
-    Text } from 'react-native';
+/* eslint-disable prettier/prettier */
+import { ImageBackground, View, Image, ScrollView,  TouchableOpacity,  Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
+
 // Imagens, Ícones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
 import Icon         from "@assets/icons/Iconlogo.png";
-
+import IconSort     from "@assets/icons/iconSort.png"
 // Funções de estilo
 import { getStylesBG } from "styles/backgroundImage";
 import { SHitorico }   from 'styles/styleHistorico';
@@ -20,32 +16,37 @@ import { ReadHistoric } from "@services/readHistorico";
 
 // Componentes
 import ModalHistorico from '@components/historico/modalHistorico';
+
+
 // Estilos
 const StyleBD = getStylesBG();
 const Style   = SHitorico();
 
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+// Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
+
+type OutraTelaNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
+
 interface Props {
-    navigation: MainScreenNavigationProp;
+    navigation: OutraTelaNavigationProp;
 }
 
 interface Historico {
-    id  : number;
-    data: object;
-    tipo: string;
-    texto:string;
+    id  : number; data: object;  tipo: string; texto:string;
 }
 
-
-export default function Historico({ navigation }: Props) {
+export default function Historico({ navigation }: Props):JSX.Element {
     const route = useRoute(); 
     const [dicionario, setDicionario] = useState<Historico[]>([]);
-    const [item, setItem]            = useState<Historico>([]);
+    const [item, setItem]            = useState<Historico[] >([]);
     const [modalVisible, setModalVisible] = useState(false);
     useEffect(() => {
-        async function fetchHistorico() {
+        async function fetchHistorico(): Promise<void> {
             try {
-                const historico = await ReadHistoric(route.params.userID);
+                const historico:Historico[] = await ReadHistoric(route.params.userID) || [];
                 setDicionario(historico); 
             } catch (error) {
                 console.error("Erro ao carregar histórico:", error);
@@ -57,10 +58,10 @@ export default function Historico({ navigation }: Props) {
     const toDateTime = async(timestamp: { seconds: number; nanoseconds: number }) =>{
         return (new Date(timestamp.seconds * 1000)).toLocaleString();
     }
-    const inverterOrdem = () =>{
+    const inverterOrdem = (): void =>{
         setDicionario(dicionario.toReversed())
     }
-    const visualizar = (item_:Historico) =>{
+    const visualizar = (item_:Historico[]):void =>{
         setItem(item_);
         setModalVisible(!modalVisible);
     }
@@ -73,9 +74,9 @@ export default function Historico({ navigation }: Props) {
             <View style={Style.viewTitle}>
                 <Text style={Style.textTitle}>Histórico</Text>
             </View>
-            <View>
-                <TouchableOpacity onPress={()=>{inverterOrdem();}}>
-                    <Text>Inverter ordem</Text>
+            <View style={Style.viewIcon}>
+                <TouchableOpacity onPress={()=>{inverterOrdem();}} >
+                    <Image source={IconSort} style={Style.viewImage}/>
                 </TouchableOpacity>
             </View>
             <ScrollView style={Style.scrollview}>

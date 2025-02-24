@@ -6,7 +6,6 @@ import {
     ScrollView  } from "react-native";
 
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList  } from "@navigation/navegacaoMain"
 
 // Imagens, Icones
 import PlanoDeFundo from "@assets/image/drawerFundo.png";
@@ -34,13 +33,18 @@ const StylesCadastra = SCadastrar();
 
 
 // Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
+
 type OutraTelaNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
 
 interface Props {
     navigation: OutraTelaNavigationProp;
 }
 
-export default function CadastroUsuario({navigation}: Props){
+export default function CadastroUsuario({navigation}: Props):JSX.Element{
 
     const [NomeUser,setNomeUser]             = useState<string | null>('');
     const [dataNascimento,setdataNascimento] = useState<string | null>('');
@@ -48,14 +52,15 @@ export default function CadastroUsuario({navigation}: Props){
     const [Senha ,setSenha] = useState<string | null>(null);
     const [Rsenha,setRsenha]= useState<string | null>(null);
 
-    const cadastrarUser = async() => {
+    const cadastrarUser = async():Promise<void> => {
 
         try{
-            const inforUser = {
-                nome_ : NomeUser,
-                data_ : dataNascimento,
-                email: Email,            
-                rsenha:Rsenha, senha: Senha
+            const inforUser:{} = {
+                nome_ : NomeUser      ||null,
+                data_ : dataNascimento||null,
+                email : Email         ||null,            
+                rsenha:Rsenha         ||null, 
+                senha : Senha         ||null
             }
             const result_:boolean = UserVerify(inforUser);
 

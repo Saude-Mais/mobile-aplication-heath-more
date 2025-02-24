@@ -32,13 +32,18 @@ const Style = getStylesMain();
 
 // rotas
 
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+// Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
+
+type OutraTelaNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
 
 interface Props {
-    navigation: MainScreenNavigationProp;
+    navigation: OutraTelaNavigationProp;
 }
-
-export default function Main( { navigation } : Props){
+export default function Main( { navigation } : Props):JSX.Element{
     return(
 
         <ImageBackground source={PlanoDeFundo} style={StyleBackgroud.container}>    
@@ -59,6 +64,5 @@ export default function Main( { navigation } : Props){
                 </View>
             </View>
         </ImageBackground>
-
     )
 }

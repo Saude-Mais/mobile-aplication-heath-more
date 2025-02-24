@@ -24,14 +24,20 @@ import EnviarMensagem     from '@components/chatbot/enviarMensagem';
 const Style   = SChatbot();
 const StyleBD = getStylesBG();
 
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
+// Constantes para navegação
+type RootStackParamList = {
+    OutraTela: undefined;
+    Login: { email: string };
+};
+
+type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'OutraTela'>;
 
 interface props {
     navigation: MainScreenNavigationProp;
 }
 
-export default function ChatDoctor({navigation} : props){
+export default function ChatDoctor({navigation} : props):JSX.Element{
 
     const safetySettings = [
         {
@@ -57,7 +63,7 @@ export default function ChatDoctor({navigation} : props){
         ]);
     }, []);
 
-    const enviaRepostaChat = async(text:string) =>{
+    const enviaRepostaChat = async(text:string):Promise<void> =>{
         try{
             // Aqui você pode chamar sua API (Dialogflow, Rasa, ou outro)
             const API_KEY = ApiKey();
@@ -78,12 +84,12 @@ export default function ChatDoctor({navigation} : props){
                         user: { _id: 2,  name: 'Chatbot'},
                     }
             
-            setMessages((prevMessages) => GiftedChat.append(prevMessages, [resposta]));
+            setMessages((prevMessages):Promise<void> => GiftedChat.append(prevMessages, [resposta]));
         }catch(error){
             alert(error.message)
         }
     }
-    const onSend = async(newMessages = []) => {
+    const onSend = async(newMessages = []):Promise<void> => {
         try{
             setMessages(GiftedChat.append(messages, newMessages));
             const text = newMessages[0].text; 

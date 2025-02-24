@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { useRoute }        from '@react-navigation/native';
 import { View, Text, ImageBackground } from 'react-native';
@@ -26,12 +27,12 @@ interface Props {
 };
 
 
-export default function Exames({navigation}: Props){
+export default function Exames({navigation}: Props):JSX.Element{
     const [text, setText]           = useState<string>('');
     const [Documento, setDocumento] = useState<string>('');
     const route = useRoute()
 
-    const getDocument = async () => {
+    const getDocument = async ():Promise<void> => {
         try {
             const userID = route.params.userID;
             // Pegando o documento
@@ -84,7 +85,7 @@ export default function Exames({navigation}: Props){
                     tipo  : 'Exame Preliminar'
                 }, userID)
         // Tratando os erros
-        }catch(error: any){
+        }catch(error){
             alert(error.message);
         }
     };

@@ -30,6 +30,14 @@ export const SHitorico = () =>{
         touchInverterOrdem : {
             backgroundColor : 'rgb(255, 255, 255)',
             borderRadius:12,
+        }, 
+        viewIcon:{
+            marginLeft:280, 
+            marginTop :10
+        },
+        viewImage:{
+            width:25, 
+            height:25
         }
     });
 }

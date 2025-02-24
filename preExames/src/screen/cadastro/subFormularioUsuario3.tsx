@@ -1,24 +1,18 @@
-import   React,{ useState } from "react";
+import   React from "react";
 import { View , Text , TextInput } from "react-native";
-import MaskInput ,{ Masks } from 'react-native-mask-input';
 
 // estilos
 import { SFormulario } from "styles/stylesFormulario";
 
 const Style = SFormulario();
 
-interface Formulario3Props{
+interface Props{
     emailChange : (email : string) => void;
     senhaChange : (senha : string) => void;
     rsenhaChange: (rsenha: string) => void;
 }
 
-export default function Formulario3(
-    {
-        emailChange, senhaChange, rsenhaChange
-    } : Formulario3Props
-){
-  
+export default function Formulario3({ emailChange, senhaChange, rsenhaChange } : Props):JSX.Element{
       return(
             <View>
                 <Text style={Style.text}>E-mail</Text>
